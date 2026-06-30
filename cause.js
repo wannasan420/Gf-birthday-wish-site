@@ -6,12 +6,12 @@
         gif: "gif1.gif"
     },
     { 
-        text: "May your day be filled with love, laughter, and endless joy. 🌸 ", 
+        text: "I can completely drop my guard and be my truest, silliest self around you without any fear of judgment. 🌸 ", 
         emoji: "💗",
         gif: "gif2.gif"
     },
     { 
-        text: "Wishing you success, happiness, and everything your heart desires. ✨ ", 
+        text: "Your presence and your hugs instantly melt away my daily stress and bring peace to my mind.✨ ", 
         emoji: "💕",
         gif: "gif1.gif"
     },
@@ -27,6 +27,8 @@ let currentReasonIndex = 0;
 const reasonsContainer = document.getElementById('reasons-container');
 const shuffleButton = document.querySelector('.shuffle-button');
 const reasonCounter = document.querySelector('.reason-counter');
+const endingSection = document.querySelector('.ending-section');
+const endingText = document.querySelector('.ending-text');
 let isTransitioning = false;
 
 // Create reason card with gif
@@ -78,6 +80,7 @@ function displayNewReason() {
                 onComplete: () => {
                     shuffleButton.textContent = "Enter Our Storylane 💫";
                     shuffleButton.classList.add('story-mode');
+                    revealEndingSection();
                     shuffleButton.addEventListener('click', () => {
                         gsap.to('body', {
                             opacity: 0,
@@ -146,3 +149,15 @@ document.addEventListener('mousemove', (e) => {
 
 // Create initial floating elements
 setInterval(createFloatingElement, 2000);
+
+function revealEndingSection() {
+    if (!endingSection || !endingText) return;
+
+    gsap.to(endingText, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power2.out"
+    });
+}
